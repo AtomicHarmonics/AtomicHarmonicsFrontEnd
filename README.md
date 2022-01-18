@@ -1,3 +1,10 @@
+TODOS:
+Input validation
+Deletion of profiles
+Better layout
+Not reseting selected status of profile when submitting form
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
