@@ -1,23 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
-
+import {NameForm} from "./NameForm.js"
+import {ProfilesList} from "./ProfilesList.js"
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="App-header2">
+        <p1>ATOMIC HARMONICS APP</p1>
+        <br></br>
       </header>
+      <div className="inputForm-class">
+      <br></br>
+        <NameForm/>
+      </div>
+      <div className="profilesList-class">
+      <br></br>
+        <ProfilesList/>
+      </div>
+      
     </div>
   );
 }
