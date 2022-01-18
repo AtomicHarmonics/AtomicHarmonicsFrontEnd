@@ -5,6 +5,8 @@ export class ProfilesList extends React.Component {
       this.state = {nameInputValue: '', listOfProfiles:[]};
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this);
+      this.handleChangeDeleteButton = this.handleChangeDeleteButton.bind(this);
+      
     }
     componentDidMount() {
       window.setInterval(() => {
@@ -37,6 +39,18 @@ export class ProfilesList extends React.Component {
       fetch('http://192.168.86.31:4996/effectsProfile/selectedProfile/', requestOptions)
         .then(response => console.log(response));
     }
+    handleChangeDeleteButton(event) {
+      var tempData = {};
+      tempData.title = event.target.name;
+      console.log(event.target.name);
+      const requestOptions = {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(tempData)
+      };
+      fetch('http://192.168.86.31:4996/effectsProfile/', requestOptions)
+        .then(response => console.log(response));
+    }
     handleSubmit(event) {
       console.log(this.state.listOfProfiles);
       event.preventDefault();
@@ -45,7 +59,9 @@ export class ProfilesList extends React.Component {
     render() {
       const listItems = this.state.listOfProfiles.map((profile) =>
         <li key={profile.title}>
-          <input name={profile.title} type="button" value="Select Profile" identifyingKey={profile.title} onClick={this.handleChangeCheckBox}/>
+          <input name={profile.title} type="button" value="Select Profile" onClick={this.handleChangeCheckBox}/>
+          <input name={profile.title} type="button" value="Delete Profile"  onClick={this.handleChangeDeleteButton}/>
+          
           <p>{profile.title}</p>
           <p>{profile.author}</p>
           <p>Tremolo enabled: {profile.tremoloEnabled.toString()}</p>

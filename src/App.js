@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header2">
-        <p1>ATOMIC HARMONICS APP</p1>
+        <p>ATOMIC HARMONICS APP</p>
         <br></br>
       </header>
       <div className="inputForm-class">
