@@ -14,7 +14,7 @@ export class ProfilesList extends React.Component {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }
         };
-        fetch('http://192.168.86.31:4996/effectsProfiles', requestOptions)
+        fetch('http://localhost:4996/effectsProfiles', requestOptions)
         .then(response => response.json())
         .then(data => this.setState({["listOfProfiles"]: data}));
       }, 2000)
@@ -36,7 +36,7 @@ export class ProfilesList extends React.Component {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(tempData)
       };
-      fetch('http://192.168.86.31:4996/effectsProfile/selectedProfile/', requestOptions)
+      fetch('http://localhost:4996/effectsProfile/selectedProfile/', requestOptions)
         .then(response => console.log(response));
     }
     handleChangeDeleteButton(event) {
@@ -48,7 +48,7 @@ export class ProfilesList extends React.Component {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(tempData)
       };
-      fetch('http://192.168.86.31:4996/effectsProfile/', requestOptions)
+      fetch('http://localhost:4996/effectsProfile/', requestOptions)
         .then(response => console.log(response));
     }
     handleSubmit(event) {

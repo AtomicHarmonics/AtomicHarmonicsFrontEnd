@@ -77,7 +77,7 @@ export class NameForm extends React.Component {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(resultingJson)
       };
-      fetch('http://192.168.86.31:4996/effectsProfile/', requestOptions)
+      fetch('http://localhost:4996/effectsProfile/', requestOptions)
         .then(response => console.log(response));
 
 
