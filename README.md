@@ -1,8 +1,11 @@
 TODOS:
-Input validation
-Deletion of profiles
-Better layout
-Not reseting selected status of profile when submitting form
+Input validation \
+Better layout \
+
+Installation: \
+install npm using this command: 'sudo apt install nodejs npm' \
+
+Running the app: 'npm start'
 
 
 # Getting Started with Create React App
