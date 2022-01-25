@@ -2,7 +2,8 @@ import React from 'react';
 export class NameForm extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {titleInputValue: '', authorInputValue:'', tremoloRateInputValue:'0', tremoloDepthInputValue:'0', tremoloEnableInputValue: false, tremoloOrderInputValue:'1', overdriveThreshInputValue:'0', overDriveEnableInputValue: false, overDriveOrderInputValue:'2'};
+      this.state = {titleInputValue: '', authorInputValue:'', tremoloRateInputValue:'0', tremoloDepthInputValue:'0', tremoloEnableInputValue: false, tremoloOrderInputValue:'1',
+        overdriveThreshInputValue:'0', overDriveEnableInputValue: false, overDriveOrderInputValue:'2', distortThreshInputValue:'0', distortEnableInputValue: false, distortOrderInputValue:'2'};
       
       this.handleChangeAny = this.handleChangeAny.bind(this);
       this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this);
@@ -68,7 +69,9 @@ export class NameForm extends React.Component {
       var resultingJson = { "title": tempTitle, "author": tempAuthor, "tremoloFreq": parseFloat(this.state.tremoloRateInputValue),
                             "tremoloDepth": parseInt(this.state.tremoloDepthInputValue), "tremoloEnabled": this.state.tremoloEnableInputValue, 
                             "tremoloOrderNumber": parseInt(this.state.tremoloOrderInputValue), "overDriveThresh": parseFloat(this.state.overdriveThreshInputValue), 
-                            "overDriveEnabled": this.state.overDriveEnableInputValue, "overDriveOrderNumber": parseInt(this.state.overDriveOrderInputValue)};
+                            "overDriveEnabled": this.state.overDriveEnableInputValue, "overDriveOrderNumber": parseInt(this.state.overDriveOrderInputValue),
+                            "distortThresh": parseFloat(this.state.distortThreshInputValue), 
+                            "distortEnabled": this.state.distortEnableInputValue, "distortOrderNumber": parseInt(this.state.distortOrderInputValue)};
       resultingJson.isSelected = false;
       var strJson = JSON.stringify(resultingJson);
       console.log(strJson);
@@ -110,12 +113,12 @@ export class NameForm extends React.Component {
           </label>
           <label>
             TremoloOrder: {this.state.tremoloOrderInputValue.padStart(1,'0')}
-            <input name="tremoloOrderInputValue" type="range" min="1" max="2" step="1" value={this.state.tremoloOrderInputValue} onChange={this.handleChangeAny}/>
+            <input name="tremoloOrderInputValue" type="range" min="1" max="3" step="1" value={this.state.tremoloOrderInputValue} onChange={this.handleChangeAny}/>
           </label>
           <br></br>
           <label>
-            overdriveThresh: {parseFloat(this.state.overdriveThreshInputValue).toFixed(1).toString().padEnd(3,'0')}
-            <input name="overdriveThreshInputValue" type="range" min="2.0" max="3.0" step="0.1" value={this.state.overdriveThreshInputValue} onChange={this.handleChangeAny}/>
+            overdriveThresh: {parseFloat(this.state.overdriveThreshInputValue).toFixed(2).toString().padEnd(4,'0')}
+            <input name="overdriveThreshInputValue" type="range" min="0.0" max="4.0" step="0.01" value={this.state.overdriveThreshInputValue} onChange={this.handleChangeAny}/>
           </label>
           <label>
             overDriveEnable: {this.state.overDriveEnableInputValue}
@@ -123,7 +126,20 @@ export class NameForm extends React.Component {
           </label>
           <label>
             overDriveOrder: {this.state.overDriveOrderInputValue.padStart(1,'0')}
-            <input name="overDriveOrderInputValue" type="range" min="1" max="2" step="1" value={this.state.overDriveOrderInputValue} onChange={this.handleChangeAny}/>
+            <input name="overDriveOrderInputValue" type="range" min="1" max="3" step="1" value={this.state.overDriveOrderInputValue} onChange={this.handleChangeAny}/>
+          </label>
+          <br></br>
+          <label>
+            distortThresh: {parseFloat(this.state.distortThreshInputValue).toFixed(2).toString().padEnd(4,'0')}
+            <input name="distortThreshInputValue" type="range" min="0.0" max="0.50" step="0.01" value={this.state.distortThreshInputValue} onChange={this.handleChangeAny}/>
+          </label>
+          <label>
+            distortEnable: {this.state.distortEnableInputValue}
+            <input name="distortEnableInputValue" type="checkbox" checked={this.state.distortEnableInputValue} onChange={this.handleChangeCheckBox}/>
+          </label>
+          <label>
+            distortOrder: {this.state.distortOrderInputValue.padStart(1,'0')}
+            <input name="distortOrderInputValue" type="range" min="1" max="3" step="1" value={this.state.distortOrderInputValue} onChange={this.handleChangeAny}/>
           </label>
           <br></br>
           <input type="submit" value="Submit" />
