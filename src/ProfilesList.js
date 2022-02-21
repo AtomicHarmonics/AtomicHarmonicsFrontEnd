@@ -65,17 +65,29 @@ export class ProfilesList extends React.Component {
           
           <p>{profile.title}</p>
           <p>{profile.author}</p>
-          <p>Tremolo enabled: {profile.tremoloEnabled.toString()}</p>
+
+          <p>Tremolo Enabled: {profile.tremoloEnabled.toString()}</p>
           <p>Tremolo Freq: {profile.tremoloFreq}</p>
           <p>Tremolo Depth: {profile.tremoloDepth}</p>
           <p>Tremolo Order Number: {profile.tremoloOrderNumber}</p>
+
           <p>overDriveThresh: {profile.overDriveThresh}</p>
           <p>overDrive Enabled: {profile.overDriveEnabled.toString()}</p>
           <p>overDriveOrderNumber: {profile.overDriveOrderNumber}</p>
+
           <p>distortThresh: {profile.distortThresh}</p>
           <p>distort Enabled: {profile.distortEnabled.toString()}</p>
           <p>distortOrderNumber: {profile.distortOrderNumber}</p>
           
+          <p>Reverb Enabled: {profile.reverbEnabled.toString()}</p>
+          <p>Reverb Room Size: {profile.reverbRoomSize}</p>
+          <p>Reverb Dry Level: {profile.reverbDryLevel}</p>
+          <p>Reverb Wet Level: {profile.reverbWetLevel}</p>
+          <p>Reverb Damp Level: {profile.reverbDampLevel}</p>
+          <p>Reverb Width: {profile.reverbWidth}</p>
+          <p>Reverb Mode: {profile.reverbMode}</p>
+          <p>reverbOrderNumber: {profile.reverbOrderNumber}</p>
+    
           <p>isSelected: {profile.isSelected.toString()}</p>  
           <br></br>     
         </li>

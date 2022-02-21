@@ -3,8 +3,10 @@ export class NameForm extends React.Component {
     constructor(props) {
       super(props);
       this.state = {titleInputValue: '', authorInputValue:'', tremoloRateInputValue:'0', tremoloDepthInputValue:'0', tremoloEnableInputValue: false, tremoloOrderInputValue:'1',
-        overdriveThreshInputValue:'0', overDriveEnableInputValue: false, overDriveOrderInputValue:'2', distortThreshInputValue:'0', distortEnableInputValue: false, distortOrderInputValue:'2'};
-      
+        overdriveThreshInputValue:'0', overDriveEnableInputValue: false, overDriveOrderInputValue:'2', distortThreshInputValue:'0', distortEnableInputValue: false, distortOrderInputValue:'2', 
+        reverbRoomSizeInputValue:'0', reverbDryLevelInputValue:'0', reverbDampLevelInputValue:'0', reverbWetLevelInputValue:'0', reverbWidthInputValue:'0', 
+        reverbModeInputValue:'0', reverbEnabledInputValue: false, reverbOrderNumberInputValue:'4'};
+       
       this.handleChangeAny = this.handleChangeAny.bind(this);
       this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this);
       
@@ -71,7 +73,17 @@ export class NameForm extends React.Component {
                             "tremoloOrderNumber": parseInt(this.state.tremoloOrderInputValue), "overDriveThresh": parseFloat(this.state.overdriveThreshInputValue), 
                             "overDriveEnabled": this.state.overDriveEnableInputValue, "overDriveOrderNumber": parseInt(this.state.overDriveOrderInputValue),
                             "distortThresh": parseFloat(this.state.distortThreshInputValue), 
-                            "distortEnabled": this.state.distortEnableInputValue, "distortOrderNumber": parseInt(this.state.distortOrderInputValue)};
+                            "distortEnabled": this.state.distortEnableInputValue, "distortOrderNumber": parseInt(this.state.distortOrderInputValue),
+                            "reverbWetLevel": parseFloat(this.state.reverbWetLevelInputValue), "reverbRoomSize": parseFloat(this.state.reverbRoomSizeInputValue),
+                            "reverbDryLevel": parseFloat(this.state.reverbDryLevelInputValue), "reverbDampLevel": parseFloat(this.state.reverbDampLevelInputValue),
+                            "reverbWidth": parseFloat(this.state.reverbWidthInputValue), "reverbEnabled": this.state.reverbEnabledInputValue,
+                            "reverbMode": parseInt(this.state.reverbModeInputValue), "reverbOrderNumber": parseInt(this.state.reverbOrderNumberInputValue)
+                            // fields = ('title','author','tremoloFreq', 'tremoloDepth', 'tremoloEnabled', 
+                            // 'tremoloOrderNumber', 'overDriveThresh', 'overDriveEnabled', 'overDriveOrderNumber', 
+                            // 'distortThresh', 'distortEnabled', 'distortOrderNumber', 'reverbWetLevel', 'reverbRoomSize', 
+                            // 'reverbDryLevel', 'reverbDampLevel', 'reverbWidth','reverbEnabled', 'reverbMode',
+                            // 'reverbOrderNumber', 'isSelected')
+                          };
       resultingJson.isSelected = false;
       var strJson = JSON.stringify(resultingJson);
       console.log(strJson);
@@ -113,7 +125,7 @@ export class NameForm extends React.Component {
           </label>
           <label>
             TremoloOrder: {this.state.tremoloOrderInputValue.padStart(1,'0')}
-            <input name="tremoloOrderInputValue" type="range" min="1" max="3" step="1" value={this.state.tremoloOrderInputValue} onChange={this.handleChangeAny}/>
+            <input name="tremoloOrderInputValue" type="range" min="1" max="4" step="1" value={this.state.tremoloOrderInputValue} onChange={this.handleChangeAny}/>
           </label>
           <br></br>
           <label>
@@ -126,7 +138,7 @@ export class NameForm extends React.Component {
           </label>
           <label>
             overDriveOrder: {this.state.overDriveOrderInputValue.padStart(1,'0')}
-            <input name="overDriveOrderInputValue" type="range" min="1" max="3" step="1" value={this.state.overDriveOrderInputValue} onChange={this.handleChangeAny}/>
+            <input name="overDriveOrderInputValue" type="range" min="1" max="4" step="1" value={this.state.overDriveOrderInputValue} onChange={this.handleChangeAny}/>
           </label>
           <br></br>
           <label>
@@ -139,7 +151,40 @@ export class NameForm extends React.Component {
           </label>
           <label>
             distortOrder: {this.state.distortOrderInputValue.padStart(1,'0')}
-            <input name="distortOrderInputValue" type="range" min="1" max="3" step="1" value={this.state.distortOrderInputValue} onChange={this.handleChangeAny}/>
+            <input name="distortOrderInputValue" type="range" min="1" max="4" step="1" value={this.state.distortOrderInputValue} onChange={this.handleChangeAny}/>
+          </label>
+          <br></br>
+          <label>
+            reverbRoomSize: {parseFloat(this.state.reverbRoomSizeInputValue).toFixed(2).toString().padEnd(4,'0')}
+            <input name="reverbRoomSizeInputValue" type="range" min="0.0" max="1.0" step="0.01" value={this.state.reverbRoomSizeInputValue} onChange={this.handleChangeAny}/>
+          </label>
+          <label>
+            reverbDryLevel: {parseFloat(this.state.reverbDryLevelInputValue).toFixed(2).toString().padEnd(4,'0')}
+            <input name="reverbDryLevelInputValue" type="range" min="0.0" max="1.0" step="0.01"  value={this.state.reverbDryLevelInputValue} onChange={this.handleChangeAny}/>
+          </label>
+          <label>
+            reverbDampLevel: {parseFloat(this.state.reverbDampLevelInputValue).toFixed(2).toString().padEnd(4,'0')}
+            <input name="reverbDampLevelInputValue" type="range" min="0.0" max="1.0" step="0.01"  value={this.state.reverbDampLevelInputValue} onChange={this.handleChangeAny}/>
+          </label>
+          <label>
+            reverbWetLevel: {parseFloat(this.state.reverbWetLevelInputValue).toFixed(2).toString().padEnd(4,'0')}
+            <input name="reverbWetLevelInputValue" type="range" min="0.0" max="1.0" step="0.01"  value={this.state.reverbWetLevelInputValue} onChange={this.handleChangeAny}/>
+          </label>
+          <label>
+            reverbWidth: {parseFloat(this.state.reverbWidthInputValue).toFixed(2).toString().padEnd(4,'0')}
+            <input name="reverbWidthInputValue" type="range" min="0.0" max="1.0" step="0.01" value={this.state.reverbWidthInputValue} onChange={this.handleChangeAny}/>
+          </label>
+          <label>
+            reverbMode: {this.state.reverbModeInputValue.padStart(1,'0')}
+            <input name="reverbModeInputValue" type="range" min="0" max="1" step="1" value={this.state.reverbModeInputValue} onChange={this.handleChangeAny}/>
+          </label>
+          <label>
+            reverbOrder: {this.state.reverbOrderNumberInputValue.padStart(1,'0')}
+            <input name="reverbOrderNumberInputValue" type="range" min="1" max="4" step="1" value={this.state.reverbOrderNumberInputValue} onChange={this.handleChangeAny}/>
+          </label>
+          <label>
+            reverbEnable: {this.state.reverbEnabledInputValue}
+            <input name="reverbEnabledInputValue" type="checkbox" checked={this.state.reverbEnabledInputValue} onChange={this.handleChangeCheckBox}/>
           </label>
           <br></br>
           <input type="submit" value="Submit" />
