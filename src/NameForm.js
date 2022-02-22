@@ -4,8 +4,8 @@ export class NameForm extends React.Component {
       super(props);
       this.state = {titleInputValue: '', authorInputValue:'', tremoloRateInputValue:'0', tremoloDepthInputValue:'0', tremoloEnableInputValue: false, tremoloOrderInputValue:'1',
         overdriveThreshInputValue:'0', overDriveEnableInputValue: false, overDriveOrderInputValue:'2', distortThreshInputValue:'0', distortEnableInputValue: false, distortOrderInputValue:'2', 
-        reverbRoomSizeInputValue:'0', reverbDryLevelInputValue:'0', reverbDampLevelInputValue:'0', reverbWetLevelInputValue:'0', reverbWidthInputValue:'0', 
-        reverbModeInputValue:'0', reverbEnabledInputValue: false, reverbOrderNumberInputValue:'4', preAmpEnabledInputValue: false, preAmpGainInputValue:'0'};
+        reverbRoomSizeInputValue:'0.5', reverbDryLevelInputValue:'0.0', reverbDampLevelInputValue:'0.25', reverbWetLevelInputValue:'0.30', reverbWidthInputValue:'1.0', 
+        reverbModeInputValue:'0.0', reverbEnabledInputValue: false, reverbOrderNumberInputValue:'4', preAmpEnabledInputValue: false, preAmpGainInputValue:'0'};
        
       this.handleChangeAny = this.handleChangeAny.bind(this);
       this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this);
