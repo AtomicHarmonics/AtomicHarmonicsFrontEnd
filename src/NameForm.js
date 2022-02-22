@@ -5,7 +5,7 @@ export class NameForm extends React.Component {
       this.state = {titleInputValue: '', authorInputValue:'', tremoloRateInputValue:'0', tremoloDepthInputValue:'0', tremoloEnableInputValue: false, tremoloOrderInputValue:'1',
         overdriveThreshInputValue:'0', overDriveEnableInputValue: false, overDriveOrderInputValue:'2', distortThreshInputValue:'0', distortEnableInputValue: false, distortOrderInputValue:'2', 
         reverbRoomSizeInputValue:'0', reverbDryLevelInputValue:'0', reverbDampLevelInputValue:'0', reverbWetLevelInputValue:'0', reverbWidthInputValue:'0', 
-        reverbModeInputValue:'0', reverbEnabledInputValue: false, reverbOrderNumberInputValue:'4'};
+        reverbModeInputValue:'0', reverbEnabledInputValue: false, reverbOrderNumberInputValue:'4', preAmpEnabledInputValue: false, preAmpGainInputValue:'0'};
        
       this.handleChangeAny = this.handleChangeAny.bind(this);
       this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this);
@@ -77,12 +77,9 @@ export class NameForm extends React.Component {
                             "reverbWetLevel": parseFloat(this.state.reverbWetLevelInputValue), "reverbRoomSize": parseFloat(this.state.reverbRoomSizeInputValue),
                             "reverbDryLevel": parseFloat(this.state.reverbDryLevelInputValue), "reverbDampLevel": parseFloat(this.state.reverbDampLevelInputValue),
                             "reverbWidth": parseFloat(this.state.reverbWidthInputValue), "reverbEnabled": this.state.reverbEnabledInputValue,
-                            "reverbMode": parseInt(this.state.reverbModeInputValue), "reverbOrderNumber": parseInt(this.state.reverbOrderNumberInputValue)
-                            // fields = ('title','author','tremoloFreq', 'tremoloDepth', 'tremoloEnabled', 
-                            // 'tremoloOrderNumber', 'overDriveThresh', 'overDriveEnabled', 'overDriveOrderNumber', 
-                            // 'distortThresh', 'distortEnabled', 'distortOrderNumber', 'reverbWetLevel', 'reverbRoomSize', 
-                            // 'reverbDryLevel', 'reverbDampLevel', 'reverbWidth','reverbEnabled', 'reverbMode',
-                            // 'reverbOrderNumber', 'isSelected')
+                            "reverbMode": parseInt(this.state.reverbModeInputValue), "reverbOrderNumber": parseInt(this.state.reverbOrderNumberInputValue),
+                            "preAmpEnabled": this.state.preAmpEnabledInputValue, "preAmpGain": parseFloat(this.state.preAmpGainInputValue)
+                            
                           };
       resultingJson.isSelected = false;
       var strJson = JSON.stringify(resultingJson);
@@ -109,6 +106,15 @@ export class NameForm extends React.Component {
           <label>
             Author:
             <input name="authorInputValue" type="text" value={this.state.authorInputValue} onChange={this.handleChangeAny} />
+          </label>
+          <br></br>
+          <label>
+            PreAmpGain: {parseFloat(this.state.preAmpGainInputValue).toFixed(2).toString().padEnd(5,'0')}
+            <input name="preAmpGainInputValue" type="range" min="0" max="5" step="0.1" value={this.state.preAmpGainInputValue} onChange={this.handleChangeAny}/>
+          </label>
+          <label>
+            PreAmpEnable: {this.state.preAmpEnabledInputValue}
+            <input name="preAmpEnabledInputValue" type="checkbox" checked={this.state.preAmpEnabledInputValue} onChange={this.handleChangeCheckBox}/>
           </label>
           <br></br>
           <label>

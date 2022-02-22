@@ -66,6 +66,9 @@ export class ProfilesList extends React.Component {
           <p>{profile.title}</p>
           <p>{profile.author}</p>
 
+          <p>PreAmp Enabled: {profile.preAmpEnabled.toString()}</p>
+          <p>PreAmp Gain: {profile.preAmpGain}</p>
+
           <p>Tremolo Enabled: {profile.tremoloEnabled.toString()}</p>
           <p>Tremolo Freq: {profile.tremoloFreq}</p>
           <p>Tremolo Depth: {profile.tremoloDepth}</p>
