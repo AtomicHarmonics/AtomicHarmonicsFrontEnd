@@ -74,11 +74,11 @@ export class ProfilesList extends React.Component {
           <p>Tremolo Depth: {profile.tremoloDepth}</p>
           <p>Tremolo Order Number: {profile.tremoloOrderNumber}</p>
 
-          <p>overDriveThresh: {profile.overDriveThresh}</p>
+          <p>overDrive Threshold: {profile.overDriveThresh}</p>
           <p>overDrive Enabled: {profile.overDriveEnabled.toString()}</p>
           <p>overDriveOrderNumber: {profile.overDriveOrderNumber}</p>
 
-          <p>distortThresh: {profile.distortThresh}</p>
+          <p>distort Threshold: {profile.distortThresh}</p>
           <p>distort Enabled: {profile.distortEnabled.toString()}</p>
           <p>distortOrderNumber: {profile.distortOrderNumber}</p>
           
@@ -90,6 +90,10 @@ export class ProfilesList extends React.Component {
           <p>Reverb Width: {profile.reverbWidth}</p>
           <p>Reverb Mode: {profile.reverbMode}</p>
           <p>reverbOrderNumber: {profile.reverbOrderNumber}</p>
+    
+          <p>bitcrusher DownSample: {profile.bitcrusherDownSample}</p>
+          <p>bitcrusher Enabled: {profile.bitcrusherEnabled.toString()}</p>
+          <p>bitcrusherOrderNumber: {profile.bitcrusherOrderNumber}</p>
     
           <p>isSelected: {profile.isSelected.toString()}</p>  
           <br></br>     
