@@ -6,8 +6,8 @@ export class NameForm extends React.Component {
         overdriveThreshInputValue:'0', overDriveEnableInputValue: false, overDriveOrderInputValue:'2', distortThreshInputValue:'0', distortEnableInputValue: false, distortOrderInputValue:'3', 
         reverbRoomSizeInputValue:'0.5', reverbDryLevelInputValue:'0.0', reverbDampLevelInputValue:'0.25', reverbWetLevelInputValue:'0.30', reverbWidthInputValue:'1.0', 
         reverbModeInputValue:'0.0', reverbEnabledInputValue: false, reverbOrderNumberInputValue:'4', preAmpEnabledInputValue: false, preAmpGainInputValue:'0',
-        bitcrusherDownSample:'1', bitcrusherEnabled: false, bitcrusherOrderNumber:'5'};
-       
+        bitcrusherDownSample:'1', bitcrusherEnabled: false, bitcrusherOrderNumber:'5', byPassInputValue: false}};
+
       this.handleChangeAny = this.handleChangeAny.bind(this);
       this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this);
       
@@ -16,7 +16,18 @@ export class NameForm extends React.Component {
       this.handleChangeFloatOnePoint = this.handleChangeFloatOnePoint.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
-  
+    componentDidMount() {
+      window.setInterval(() => {
+        const requestOptions = {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' }
+        };
+        fetch('http://localhost:4996/byPass/', requestOptions)
+        .then(response => response.json())
+        .then(data => this.setState({["byPassInputValue"]: data.bypassEnabled}));
+      }, 2000)
+      
+    }
     handleChangeFloat(event) {
       //const re = /^[0-9\b]+$/;
       const re = new RegExp('^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$')
@@ -101,6 +112,8 @@ export class NameForm extends React.Component {
     render() {
       return (
         <form onSubmit={this.handleSubmit}>
+          <p>Bypass Enabled: {this.state.byPassInputValue.toString()}</p>
+          <br></br>
           <label>
             Title:
             <input name="titleInputValue" type="text" value={this.state.titleInputValue} onChange={this.handleChangeAny} />
