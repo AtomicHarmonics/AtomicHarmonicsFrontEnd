@@ -3,10 +3,11 @@ export class NameForm extends React.Component {
     constructor(props) {
       super(props);
       this.state = {titleInputValue: '', authorInputValue:'', tremoloRateInputValue:'0', tremoloDepthInputValue:'0', tremoloEnableInputValue: false, tremoloOrderInputValue:'1',
-        overdriveThreshInputValue:'0', overDriveEnableInputValue: false, overDriveOrderInputValue:'2', distortThreshInputValue:'0', distortEnableInputValue: false, distortOrderInputValue:'2', 
+        overdriveThreshInputValue:'0', overDriveEnableInputValue: false, overDriveOrderInputValue:'2', distortThreshInputValue:'0', distortEnableInputValue: false, distortOrderInputValue:'3', 
         reverbRoomSizeInputValue:'0.5', reverbDryLevelInputValue:'0.0', reverbDampLevelInputValue:'0.25', reverbWetLevelInputValue:'0.30', reverbWidthInputValue:'1.0', 
-        reverbModeInputValue:'0.0', reverbEnabledInputValue: false, reverbOrderNumberInputValue:'4', preAmpEnabledInputValue: false, preAmpGainInputValue:'0', byPassInputValue: false};
-       
+        reverbModeInputValue:'0.0', reverbEnabledInputValue: false, reverbOrderNumberInputValue:'4', preAmpEnabledInputValue: false, preAmpGainInputValue:'0',
+        bitcrusherDownSampleInputValue:'1', bitcrusherEnabledInputValue: false, bitcrusherOrderNumberInputValue:'5', byPassInputValue: false};
+
       this.handleChangeAny = this.handleChangeAny.bind(this);
       this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this);
       
@@ -89,7 +90,8 @@ export class NameForm extends React.Component {
                             "reverbDryLevel": parseFloat(this.state.reverbDryLevelInputValue), "reverbDampLevel": parseFloat(this.state.reverbDampLevelInputValue),
                             "reverbWidth": parseFloat(this.state.reverbWidthInputValue), "reverbEnabled": this.state.reverbEnabledInputValue,
                             "reverbMode": parseInt(this.state.reverbModeInputValue), "reverbOrderNumber": parseInt(this.state.reverbOrderNumberInputValue),
-                            "preAmpEnabled": this.state.preAmpEnabledInputValue, "preAmpGain": parseFloat(this.state.preAmpGainInputValue)
+                            "preAmpEnabled": this.state.preAmpEnabledInputValue, "preAmpGain": parseFloat(this.state.preAmpGainInputValue), "bitcrusherEnabled": this.state.bitcrusherEnabledInputValue,
+                            "bitcrusherDownSample": parseInt(this.state.bitcrusherDownSampleInputValue), "bitcrusherOrderNumber": parseInt(this.state.bitcrusherOrderNumberInputValue)
                             
                           };
       resultingJson.isSelected = false;
@@ -144,7 +146,7 @@ export class NameForm extends React.Component {
           </label>
           <label>
             TremoloOrder: {this.state.tremoloOrderInputValue.padStart(1,'0')}
-            <input name="tremoloOrderInputValue" type="range" min="1" max="4" step="1" value={this.state.tremoloOrderInputValue} onChange={this.handleChangeAny}/>
+            <input name="tremoloOrderInputValue" type="range" min="1" max="5" step="1" value={this.state.tremoloOrderInputValue} onChange={this.handleChangeAny}/>
           </label>
           <br></br>
           <label>
@@ -157,7 +159,7 @@ export class NameForm extends React.Component {
           </label>
           <label>
             overDriveOrder: {this.state.overDriveOrderInputValue.padStart(1,'0')}
-            <input name="overDriveOrderInputValue" type="range" min="1" max="4" step="1" value={this.state.overDriveOrderInputValue} onChange={this.handleChangeAny}/>
+            <input name="overDriveOrderInputValue" type="range" min="1" max="5" step="1" value={this.state.overDriveOrderInputValue} onChange={this.handleChangeAny}/>
           </label>
           <br></br>
           <label>
@@ -170,7 +172,7 @@ export class NameForm extends React.Component {
           </label>
           <label>
             distortOrder: {this.state.distortOrderInputValue.padStart(1,'0')}
-            <input name="distortOrderInputValue" type="range" min="1" max="4" step="1" value={this.state.distortOrderInputValue} onChange={this.handleChangeAny}/>
+            <input name="distortOrderInputValue" type="range" min="1" max="5" step="1" value={this.state.distortOrderInputValue} onChange={this.handleChangeAny}/>
           </label>
           <br></br>
           <label>
@@ -199,11 +201,24 @@ export class NameForm extends React.Component {
           </label>
           <label>
             reverbOrder: {this.state.reverbOrderNumberInputValue.padStart(1,'0')}
-            <input name="reverbOrderNumberInputValue" type="range" min="1" max="4" step="1" value={this.state.reverbOrderNumberInputValue} onChange={this.handleChangeAny}/>
+            <input name="reverbOrderNumberInputValue" type="range" min="1" max="5" step="1" value={this.state.reverbOrderNumberInputValue} onChange={this.handleChangeAny}/>
           </label>
           <label>
             reverbEnable: {this.state.reverbEnabledInputValue}
             <input name="reverbEnabledInputValue" type="checkbox" checked={this.state.reverbEnabledInputValue} onChange={this.handleChangeCheckBox}/>
+          </label>
+          <br></br>
+          <label>
+            bitcrusherDownSample: {this.state.bitcrusherDownSampleInputValue.padStart(1,'0')}
+            <input name="bitcrusherDownSampleInputValue" type="range" min="1" max="10" step="1" value={this.state.bitcrusherDownSampleInputValue} onChange={this.handleChangeAny}/>
+          </label>
+          <label>
+            bitcrusherEnabled: {this.state.bitcrusherEnabledInputValue}
+            <input name="bitcrusherEnabledInputValue" type="checkbox" checked={this.state.bitcrusherEnabledInputValue} onChange={this.handleChangeCheckBox}/>
+          </label>
+          <label>
+            bitcrusherOrder: {this.state.bitcrusherOrderNumberInputValue.padStart(1,'0')}
+            <input name="bitcrusherOrderNumberInputValue" type="range" min="1" max="5" step="1" value={this.state.bitcrusherOrderNumberInputValue} onChange={this.handleChangeAny}/>
           </label>
           <br></br>
           <input type="submit" value="Submit" />
@@ -211,3 +226,4 @@ export class NameForm extends React.Component {
       );
     }
   }
+
