@@ -11,17 +11,31 @@ export class VideoPlayer extends React.Component {
       }
       handleStartButton(event) {
         const video = this.player;
-      const hls = new Hls();
-      const url = "http://localhost:4996/staticContent/static/videos/index.m3u8";
+        const url = "http://localhost:4996/staticContent/static/audio/index.m3u8";
+        if (video.canPlayType('application/vnd.apple.mpegurl')) {
+          video.src = url;
+          //
+          // If no native HLS support, check if HLS.js is supported
+          //
+        } else if (Hls.isSupported()) {
+          var hls = new Hls();
+          hls.loadSource(url);
+          hls.attachMedia(video);
+          hls.on(Hls.Events.MANIFEST_PARSED, function() {
+            console.log("playing now");  
+            video.play(); });
+          }
+        
+
+//      const hls = new Hls();
+      
  
-      hls.loadSource(url);
-      hls.attachMedia(video);
-      hls.on(Hls.Events.MANIFEST_PARSED, function() {
-        console.log("playing now");  
-        video.play(); });
-    
-   
-    }
+      // hls.loadSource(url);
+      // hls.attachMedia(video);
+      // hls.on(Hls.Events.MANIFEST_PARSED, function() {
+      //   console.log("playing now");  
+      //   video.play(); });
+      }
     handleStopButton(event) {
         const video = this.player;
 
@@ -44,6 +58,7 @@ export class VideoPlayer extends React.Component {
             ref={player => (this.player = player)}
             autoPlay={true}
             controls={true}
+            playsInline
           />
         </div>
     );
