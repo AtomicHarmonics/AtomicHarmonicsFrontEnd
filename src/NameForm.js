@@ -6,7 +6,7 @@ export class NameForm extends React.Component {
         overdriveThreshInputValue:'0', overDriveEnableInputValue: false, overDriveOrderInputValue:'2', distortThreshInputValue:'0', distortEnableInputValue: false, distortOrderInputValue:'3', 
         reverbRoomSizeInputValue:'0.5', reverbDryLevelInputValue:'0.0', reverbDampLevelInputValue:'0.25', reverbWetLevelInputValue:'0.30', reverbWidthInputValue:'1.0', 
         reverbModeInputValue:'0.0', reverbEnabledInputValue: false, reverbOrderNumberInputValue:'4', preAmpEnabledInputValue: false, preAmpGainInputValue:'0',
-        bitcrusherDownSample:'1', bitcrusherEnabled: false, bitcrusherOrderNumber:'5', byPassInputValue: false}};
+        bitcrusherDownSampleInputValue:'1', bitcrusherEnabledInputValue: false, bitcrusherOrderNumberInputValue:'5', byPassInputValue: false};
 
       this.handleChangeAny = this.handleChangeAny.bind(this);
       this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this);
@@ -209,7 +209,7 @@ export class NameForm extends React.Component {
           </label>
           <br></br>
           <label>
-            bitcrusherDownSample: {parseInt(this.state.bitcrusherDownSampleInputValue).padStart(1, '0')}
+            bitcrusherDownSample: {this.state.bitcrusherDownSampleInputValue.padStart(1,'0')}
             <input name="bitcrusherDownSampleInputValue" type="range" min="1" max="10" step="1" value={this.state.bitcrusherDownSampleInputValue} onChange={this.handleChangeAny}/>
           </label>
           <label>
