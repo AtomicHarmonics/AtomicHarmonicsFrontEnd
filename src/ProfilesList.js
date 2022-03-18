@@ -3,10 +3,12 @@ import React from 'react';
 export class ProfilesList extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {nameInputValue: '', listOfProfiles:[]};
+      this.state = {nameInputValue: '', listOfProfiles:[], passwordInputValue: '', passwordStatus: ''};
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this);
       this.handleChangeDeleteButton = this.handleChangeDeleteButton.bind(this);
+      
+      this.handleChangeAny = this.handleChangeAny.bind(this);
       
     }
     componentDidMount() {
@@ -28,9 +30,21 @@ export class ProfilesList extends React.Component {
       //const name = event.target.name;
       //this.setState({[name]: event.target.value});
     }
+    handleChangeAny(event) {
+      const name = event.target.name;
+      this.setState({[name]: event.target.value})
+    }
     handleChangeCheckBox(event) {
       var tempData = {};
+      tempData.password = this.state.passwordInputValue;
       tempData.title = event.target.name;
+      if(this.state.passwordInputValue === "")
+      {
+        this.setState({["passwordInputValue"]: "defaultPass"});
+        tempData.password = "defaultPass";
+      }
+
+      
       console.log(event.target.name);
       const requestOptions = {
         method: 'POST',
@@ -38,7 +52,20 @@ export class ProfilesList extends React.Component {
         body: JSON.stringify(tempData)
       };
       fetch('http://localhost:4996/effectsProfile/selectedProfile/', requestOptions)
-        .then(response => console.log(response));
+        .then(response => {
+          console.log(response)
+          console.log(response.status)
+          if(response.status == 401)
+          {
+            console.log(this.state.passwordInputValue);
+            console.log("didn't work");
+            this.setState({["passwordStatus"]: "Incorrect Password!"})
+          }
+          else
+          {
+            this.setState({["passwordStatus"]: "Correct Password!"})
+          }
+        });
     }
     handleChangeDeleteButton(event) {
       var tempData = {};
@@ -100,7 +127,14 @@ export class ProfilesList extends React.Component {
         </li>
       );
       return (
+        <>
+        <label>
+            Password:
+            <input name="passwordInputValue" type="text" value={this.state.passwordInputValue} onChange={this.handleChangeAny} />
+        </label>
+        <p>{this.state.passwordStatus.toString()}</p>
         <ul>{listItems}</ul>
+        </>
       );
     }
   }

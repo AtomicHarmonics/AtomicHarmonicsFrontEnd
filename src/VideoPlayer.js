@@ -1,5 +1,5 @@
 import React from "react";
-import Hls from "./hls.js";
+import Hls from "hls.js";
 export class VideoPlayer extends React.Component {
     constructor(props) {
         super(props);
