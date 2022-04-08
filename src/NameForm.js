@@ -114,14 +114,20 @@ export class NameForm extends React.Component {
         backgroundColor: "lightgrey",
   //width: "100px",
   border: "15px solid green",
-  padding: "50px",
-  margin: "20px",
+  padding: "10px",
+  margin: "10px",
   display: "inline-block"
 
       }
       const mystyle2 = {
         display: "inline-block",
         padding: "10px"
+      }
+      const vertSlider = {
+        WebkitAppearance: "slider-vertical",
+        width: "8px",
+        height: "175px",
+        padding: "0 5px"
       }
       return (
         <form onSubmit={this.handleSubmit}>
@@ -141,7 +147,7 @@ export class NameForm extends React.Component {
             PreAmpGain: {parseFloat(this.state.preAmpGainInputValue).toFixed(2).toString().padEnd(5,'0')}
             </label>
             <br></br>
-            <input name="preAmpGainInputValue" type="range" orient="vertical" min="0" max="5" step="0.1" value={this.state.preAmpGainInputValue} onChange={this.handleChangeAny}/>
+            <input name="preAmpGainInputValue" style={vertSlider} orient="vertical" type="range"  min="0" max="5" step="0.1" value={this.state.preAmpGainInputValue} onChange={this.handleChangeAny}/>
             <br></br>
           <label>
             PreAmpEnable: {this.state.preAmpEnabledInputValue}
@@ -154,7 +160,7 @@ export class NameForm extends React.Component {
             TremoloRate: {parseFloat(this.state.tremoloRateInputValue).toFixed(2).toString().padEnd(5,'0')}
             <br></br>
             </label>
-            <input name="tremoloRateInputValue" type="range" orient="vertical" min="0" max="10" step="0.1" value={this.state.tremoloRateInputValue} onChange={this.handleChangeAny}/>
+            <input name="tremoloRateInputValue" style={vertSlider} type="range" orient="vertical" min="0" max="10" step="0.1" value={this.state.tremoloRateInputValue} onChange={this.handleChangeAny}/>
 
           </div>
           <div style={mystyle2}>
@@ -162,7 +168,7 @@ export class NameForm extends React.Component {
             TremoloDepth: {this.state.tremoloDepthInputValue.padStart(3,'0')}
             </label>
             <br></br>
-            <input name="tremoloDepthInputValue" type="range" orient="vertical" min="0" max="200" step="1" value={this.state.tremoloDepthInputValue} onChange={this.handleChangeAny}/>
+            <input name="tremoloDepthInputValue" style={vertSlider} type="range" orient="vertical" min="0" max="200" step="1" value={this.state.tremoloDepthInputValue} onChange={this.handleChangeAny}/>
           
           </div>
           <div style={mystyle2}>
@@ -170,7 +176,7 @@ export class NameForm extends React.Component {
             TremoloOrder: {this.state.tremoloOrderInputValue.padStart(1,'0')}
             </label>
             <br></br>
-            <input name="tremoloOrderInputValue" type="range" orient="vertical" min="1" max="5" step="1" value={this.state.tremoloOrderInputValue} onChange={this.handleChangeAny}/>
+            <input name="tremoloOrderInputValue" style={vertSlider} type="range" orient="vertical" min="1" max="5" step="1" value={this.state.tremoloOrderInputValue} onChange={this.handleChangeAny}/>
           
           </div>
           <br></br>
@@ -183,80 +189,132 @@ export class NameForm extends React.Component {
           
           </div>
           <div style={mystyle}>
+          <div style={mystyle2}>
           <label>
             overdriveThresh: {parseFloat(this.state.overdriveThreshInputValue).toFixed(2).toString().padEnd(4,'0')}
-            <input name="overdriveThreshInputValue" type="range" orient="vertical" min="0.0" max="4.0" step="0.01" value={this.state.overdriveThreshInputValue} onChange={this.handleChangeAny}/>
           </label>
+          <br></br>
+            <input name="overdriveThreshInputValue" style={vertSlider} type="range" orient="vertical" min="0.0" max="4.0" step="0.01" value={this.state.overdriveThreshInputValue} onChange={this.handleChangeAny}/>
+          </div>
+          <div style={mystyle2}>
+          <label>
+            overDriveOrder: {this.state.overDriveOrderInputValue.padStart(1,'0')}
+            </label>
+            <br></br>
+            <input name="overDriveOrderInputValue" style={vertSlider} type="range" orient="vertical" min="1" max="5" step="1" value={this.state.overDriveOrderInputValue} onChange={this.handleChangeAny}/>
+          
+          </div>
+          <br></br>
           <label>
             overDriveEnable: {this.state.overDriveEnableInputValue}
             <input name="overDriveEnableInputValue" type="checkbox" checked={this.state.overDriveEnableInputValue} onChange={this.handleChangeCheckBox}/>
           </label>
-          <label>
-            overDriveOrder: {this.state.overDriveOrderInputValue.padStart(1,'0')}
-            <input name="overDriveOrderInputValue" type="range" orient="vertical" min="1" max="5" step="1" value={this.state.overDriveOrderInputValue} onChange={this.handleChangeAny}/>
-          </label>
+          
           </div>
           <div style={mystyle}>
+          <div style={mystyle2}>
           <label>
             distortThresh: {parseFloat(this.state.distortThreshInputValue).toFixed(2).toString().padEnd(4,'0')}
-            <input name="distortThreshInputValue" type="range" orient="vertical" min="0.0" max="0.50" step="0.01" value={this.state.distortThreshInputValue} onChange={this.handleChangeAny}/>
-          </label>
+            </label>
+            <br></br>
+            <input name="distortThreshInputValue" style={vertSlider} type="range" orient="vertical" min="0.0" max="0.50" step="0.01" value={this.state.distortThreshInputValue} onChange={this.handleChangeAny}/>
+          </div>
+          <div style={mystyle2}>
+          <label>
+            distortOrder: {this.state.distortOrderInputValue.padStart(1,'0')}
+            </label>
+            <br></br>
+            <input name="distortOrderInputValue" style={vertSlider} type="range" orient="vertical" min="1" max="5" step="1" value={this.state.distortOrderInputValue} onChange={this.handleChangeAny}/>
+          
+          </div>
+          <br></br>
           <label>
             distortEnable: {this.state.distortEnableInputValue}
             <input name="distortEnableInputValue" type="checkbox" checked={this.state.distortEnableInputValue} onChange={this.handleChangeCheckBox}/>
           </label>
-          <label>
-            distortOrder: {this.state.distortOrderInputValue.padStart(1,'0')}
-            <input name="distortOrderInputValue" type="range" orient="vertical" min="1" max="5" step="1" value={this.state.distortOrderInputValue} onChange={this.handleChangeAny}/>
-          </label>
+          
           </div>
           <div style={mystyle}>
+          <div style={mystyle2}>
           <label>
             reverbRoomSize: {parseFloat(this.state.reverbRoomSizeInputValue).toFixed(2).toString().padEnd(4,'0')}
-            <input name="reverbRoomSizeInputValue" type="range" orient="vertical" min="0.0" max="1.0" step="0.01" value={this.state.reverbRoomSizeInputValue} onChange={this.handleChangeAny}/>
-          </label>
+            </label>
+            <br></br>
+            <input name="reverbRoomSizeInputValue" style={vertSlider} type="range" orient="vertical" min="0.0" max="1.0" step="0.01" value={this.state.reverbRoomSizeInputValue} onChange={this.handleChangeAny}/>
+          </div>
+          <div style={mystyle2}>
           <label>
             reverbDryLevel: {parseFloat(this.state.reverbDryLevelInputValue).toFixed(2).toString().padEnd(4,'0')}
-            <input name="reverbDryLevelInputValue" type="range" orient="vertical" min="0.0" max="1.0" step="0.01"  value={this.state.reverbDryLevelInputValue} onChange={this.handleChangeAny}/>
-          </label>
+            </label>
+            <br></br>
+            <input name="reverbDryLevelInputValue" style={vertSlider} type="range" orient="vertical" min="0.0" max="1.0" step="0.01"  value={this.state.reverbDryLevelInputValue} onChange={this.handleChangeAny}/>
+          </div>
+          <div style={mystyle2}>
           <label>
             reverbDampLevel: {parseFloat(this.state.reverbDampLevelInputValue).toFixed(2).toString().padEnd(4,'0')}
-            <input name="reverbDampLevelInputValue" type="range" orient="vertical" min="0.0" max="1.0" step="0.01"  value={this.state.reverbDampLevelInputValue} onChange={this.handleChangeAny}/>
-          </label>
+            </label>
+            <br></br>
+            <input name="reverbDampLevelInputValue" style={vertSlider} type="range" orient="vertical" min="0.0" max="1.0" step="0.01"  value={this.state.reverbDampLevelInputValue} onChange={this.handleChangeAny}/>
+          </div>
+          <div style={mystyle2}>
           <label>
             reverbWetLevel: {parseFloat(this.state.reverbWetLevelInputValue).toFixed(2).toString().padEnd(4,'0')}
-            <input name="reverbWetLevelInputValue" type="range" orient="vertical" min="0.0" max="1.0" step="0.01"  value={this.state.reverbWetLevelInputValue} onChange={this.handleChangeAny}/>
-          </label>
+            </label>
+            <br></br>
+            <input name="reverbWetLevelInputValue" style={vertSlider} type="range" orient="vertical" min="0.0" max="1.0" step="0.01"  value={this.state.reverbWetLevelInputValue} onChange={this.handleChangeAny}/>
+          </div>
+          <div style={mystyle2}>
           <label>
             reverbWidth: {parseFloat(this.state.reverbWidthInputValue).toFixed(2).toString().padEnd(4,'0')}
-            <input name="reverbWidthInputValue" type="range" orient="vertical" min="0.0" max="1.0" step="0.01" value={this.state.reverbWidthInputValue} onChange={this.handleChangeAny}/>
-          </label>
+            </label>
+            <br></br>
+            <input name="reverbWidthInputValue" style={vertSlider} type="range" orient="vertical" min="0.0" max="1.0" step="0.01" value={this.state.reverbWidthInputValue} onChange={this.handleChangeAny}/>
+          </div>
+          <div style={mystyle2}>
+          
           <label>
             reverbMode: {this.state.reverbModeInputValue.padStart(1,'0')}
-            <input name="reverbModeInputValue" type="range" orient="vertical" min="0" max="1" step="1" value={this.state.reverbModeInputValue} onChange={this.handleChangeAny}/>
-          </label>
+            </label>
+            <br></br>
+            <input name="reverbModeInputValue" style={vertSlider} type="range" orient="vertical" min="0" max="1" step="1" value={this.state.reverbModeInputValue} onChange={this.handleChangeAny}/>
+          </div>
+          
+          <div style={mystyle2}>
           <label>
             reverbOrder: {this.state.reverbOrderNumberInputValue.padStart(1,'0')}
-            <input name="reverbOrderNumberInputValue" type="range" orient="vertical" min="1" max="5" step="1" value={this.state.reverbOrderNumberInputValue} onChange={this.handleChangeAny}/>
-          </label>
+            </label>
+            <br></br>
+            <input name="reverbOrderNumberInputValue" style={vertSlider} type="range" orient="vertical" min="1" max="5" step="1" value={this.state.reverbOrderNumberInputValue} onChange={this.handleChangeAny}/>
+          </div>
+          <br></br>
           <label>
             reverbEnable: {this.state.reverbEnabledInputValue}
             <input name="reverbEnabledInputValue" type="checkbox" checked={this.state.reverbEnabledInputValue} onChange={this.handleChangeCheckBox}/>
           </label>
           </div>
           <div style={mystyle}>
+          <div style={mystyle2}>
           <label>
             bitcrusherDownSample: {this.state.bitcrusherDownSampleInputValue.padStart(1,'0')}
-            <input name="bitcrusherDownSampleInputValue" type="range" orient="vertical" min="1" max="10" step="1" value={this.state.bitcrusherDownSampleInputValue} onChange={this.handleChangeAny}/>
-          </label>
-          <label>
-            bitcrusherEnabled: {this.state.bitcrusherEnabledInputValue}
-            <input name="bitcrusherEnabledInputValue" type="checkbox" checked={this.state.bitcrusherEnabledInputValue} onChange={this.handleChangeCheckBox}/>
-          </label>
+            </label>
+            <br></br>
+            <input name="bitcrusherDownSampleInputValue" style={vertSlider} type="range" orient="vertical" min="1" max="10" step="1" value={this.state.bitcrusherDownSampleInputValue} onChange={this.handleChangeAny}/>
+          
+          </div>
+          <div style={mystyle2}>
           <label>
             bitcrusherOrder: {this.state.bitcrusherOrderNumberInputValue.padStart(1,'0')}
-            <input name="bitcrusherOrderNumberInputValue" type="range" orient="vertical" min="1" max="5" step="1" value={this.state.bitcrusherOrderNumberInputValue} onChange={this.handleChangeAny}/>
+            </label>
+            <br></br>
+            <input name="bitcrusherOrderNumberInputValue" style={vertSlider} type="range" orient="vertical" min="1" max="5" step="1" value={this.state.bitcrusherOrderNumberInputValue} onChange={this.handleChangeAny}/>
+          
+          </div>
+          <br></br>
+          <label>
+            bitcrusherzEnabled: {this.state.bitcrusherEnabledInputValue}
+            <input name="bitcrusherEnabledInputValue" type="checkbox" checked={this.state.bitcrusherEnabledInputValue} onChange={this.handleChangeCheckBox}/>
           </label>
+          
           </div>
           <br></br>
           <input type="submit" value="Submit" />
