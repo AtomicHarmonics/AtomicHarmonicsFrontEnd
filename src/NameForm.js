@@ -110,6 +110,19 @@ export class NameForm extends React.Component {
     }
   
     render() {
+      const mystyle = {
+        backgroundColor: "lightgrey",
+  //width: "100px",
+  border: "15px solid green",
+  padding: "50px",
+  margin: "20px",
+  display: "inline-block"
+
+      }
+      const mystyle2 = {
+        display: "inline-block",
+        padding: "10px"
+      }
       return (
         <form onSubmit={this.handleSubmit}>
           <p>Bypass Enabled: {this.state.byPassInputValue.toString()}</p>
@@ -123,35 +136,56 @@ export class NameForm extends React.Component {
             <input name="authorInputValue" type="text" value={this.state.authorInputValue} onChange={this.handleChangeAny} />
           </label>
           <br></br>
+          <div style={mystyle}>
           <label>
             PreAmpGain: {parseFloat(this.state.preAmpGainInputValue).toFixed(2).toString().padEnd(5,'0')}
-            <input name="preAmpGainInputValue" type="range" min="0" max="5" step="0.1" value={this.state.preAmpGainInputValue} onChange={this.handleChangeAny}/>
-          </label>
+            </label>
+            <br></br>
+            <input name="preAmpGainInputValue" type="range" orient="vertical" min="0" max="5" step="0.1" value={this.state.preAmpGainInputValue} onChange={this.handleChangeAny}/>
+            <br></br>
           <label>
             PreAmpEnable: {this.state.preAmpEnabledInputValue}
             <input name="preAmpEnabledInputValue" type="checkbox" checked={this.state.preAmpEnabledInputValue} onChange={this.handleChangeCheckBox}/>
           </label>
-          <br></br>
+          </div>
+          <div style={mystyle}>
+          <div style={mystyle2}>
           <label>
             TremoloRate: {parseFloat(this.state.tremoloRateInputValue).toFixed(2).toString().padEnd(5,'0')}
-            <input name="tremoloRateInputValue" type="range" min="0" max="10" step="0.1" value={this.state.tremoloRateInputValue} onChange={this.handleChangeAny}/>
-          </label>
+            <br></br>
+            </label>
+            <input name="tremoloRateInputValue" type="range" orient="vertical" min="0" max="10" step="0.1" value={this.state.tremoloRateInputValue} onChange={this.handleChangeAny}/>
+
+          </div>
+          <div style={mystyle2}>
           <label>
             TremoloDepth: {this.state.tremoloDepthInputValue.padStart(3,'0')}
-            <input name="tremoloDepthInputValue" type="range" min="0" max="200" step="1" value={this.state.tremoloDepthInputValue} onChange={this.handleChangeAny}/>
-          </label>
+            </label>
+            <br></br>
+            <input name="tremoloDepthInputValue" type="range" orient="vertical" min="0" max="200" step="1" value={this.state.tremoloDepthInputValue} onChange={this.handleChangeAny}/>
+          
+          </div>
+          <div style={mystyle2}>
+          <label>
+            TremoloOrder: {this.state.tremoloOrderInputValue.padStart(1,'0')}
+            </label>
+            <br></br>
+            <input name="tremoloOrderInputValue" type="range" orient="vertical" min="1" max="5" step="1" value={this.state.tremoloOrderInputValue} onChange={this.handleChangeAny}/>
+          
+          </div>
+          <br></br>
+          <div style={mystyle2}>
           <label>
             TremoloEnable: {this.state.tremoloEnableInputValue}
             <input name="tremoloEnableInputValue" type="checkbox" checked={this.state.tremoloEnableInputValue} onChange={this.handleChangeCheckBox}/>
           </label>
-          <label>
-            TremoloOrder: {this.state.tremoloOrderInputValue.padStart(1,'0')}
-            <input name="tremoloOrderInputValue" type="range" min="1" max="5" step="1" value={this.state.tremoloOrderInputValue} onChange={this.handleChangeAny}/>
-          </label>
-          <br></br>
+          </div>
+          
+          </div>
+          <div style={mystyle}>
           <label>
             overdriveThresh: {parseFloat(this.state.overdriveThreshInputValue).toFixed(2).toString().padEnd(4,'0')}
-            <input name="overdriveThreshInputValue" type="range" min="0.0" max="4.0" step="0.01" value={this.state.overdriveThreshInputValue} onChange={this.handleChangeAny}/>
+            <input name="overdriveThreshInputValue" type="range" orient="vertical" min="0.0" max="4.0" step="0.01" value={this.state.overdriveThreshInputValue} onChange={this.handleChangeAny}/>
           </label>
           <label>
             overDriveEnable: {this.state.overDriveEnableInputValue}
@@ -159,12 +193,13 @@ export class NameForm extends React.Component {
           </label>
           <label>
             overDriveOrder: {this.state.overDriveOrderInputValue.padStart(1,'0')}
-            <input name="overDriveOrderInputValue" type="range" min="1" max="5" step="1" value={this.state.overDriveOrderInputValue} onChange={this.handleChangeAny}/>
+            <input name="overDriveOrderInputValue" type="range" orient="vertical" min="1" max="5" step="1" value={this.state.overDriveOrderInputValue} onChange={this.handleChangeAny}/>
           </label>
-          <br></br>
+          </div>
+          <div style={mystyle}>
           <label>
             distortThresh: {parseFloat(this.state.distortThreshInputValue).toFixed(2).toString().padEnd(4,'0')}
-            <input name="distortThreshInputValue" type="range" min="0.0" max="0.50" step="0.01" value={this.state.distortThreshInputValue} onChange={this.handleChangeAny}/>
+            <input name="distortThreshInputValue" type="range" orient="vertical" min="0.0" max="0.50" step="0.01" value={this.state.distortThreshInputValue} onChange={this.handleChangeAny}/>
           </label>
           <label>
             distortEnable: {this.state.distortEnableInputValue}
@@ -172,45 +207,47 @@ export class NameForm extends React.Component {
           </label>
           <label>
             distortOrder: {this.state.distortOrderInputValue.padStart(1,'0')}
-            <input name="distortOrderInputValue" type="range" min="1" max="5" step="1" value={this.state.distortOrderInputValue} onChange={this.handleChangeAny}/>
+            <input name="distortOrderInputValue" type="range" orient="vertical" min="1" max="5" step="1" value={this.state.distortOrderInputValue} onChange={this.handleChangeAny}/>
           </label>
-          <br></br>
+          </div>
+          <div style={mystyle}>
           <label>
             reverbRoomSize: {parseFloat(this.state.reverbRoomSizeInputValue).toFixed(2).toString().padEnd(4,'0')}
-            <input name="reverbRoomSizeInputValue" type="range" min="0.0" max="1.0" step="0.01" value={this.state.reverbRoomSizeInputValue} onChange={this.handleChangeAny}/>
+            <input name="reverbRoomSizeInputValue" type="range" orient="vertical" min="0.0" max="1.0" step="0.01" value={this.state.reverbRoomSizeInputValue} onChange={this.handleChangeAny}/>
           </label>
           <label>
             reverbDryLevel: {parseFloat(this.state.reverbDryLevelInputValue).toFixed(2).toString().padEnd(4,'0')}
-            <input name="reverbDryLevelInputValue" type="range" min="0.0" max="1.0" step="0.01"  value={this.state.reverbDryLevelInputValue} onChange={this.handleChangeAny}/>
+            <input name="reverbDryLevelInputValue" type="range" orient="vertical" min="0.0" max="1.0" step="0.01"  value={this.state.reverbDryLevelInputValue} onChange={this.handleChangeAny}/>
           </label>
           <label>
             reverbDampLevel: {parseFloat(this.state.reverbDampLevelInputValue).toFixed(2).toString().padEnd(4,'0')}
-            <input name="reverbDampLevelInputValue" type="range" min="0.0" max="1.0" step="0.01"  value={this.state.reverbDampLevelInputValue} onChange={this.handleChangeAny}/>
+            <input name="reverbDampLevelInputValue" type="range" orient="vertical" min="0.0" max="1.0" step="0.01"  value={this.state.reverbDampLevelInputValue} onChange={this.handleChangeAny}/>
           </label>
           <label>
             reverbWetLevel: {parseFloat(this.state.reverbWetLevelInputValue).toFixed(2).toString().padEnd(4,'0')}
-            <input name="reverbWetLevelInputValue" type="range" min="0.0" max="1.0" step="0.01"  value={this.state.reverbWetLevelInputValue} onChange={this.handleChangeAny}/>
+            <input name="reverbWetLevelInputValue" type="range" orient="vertical" min="0.0" max="1.0" step="0.01"  value={this.state.reverbWetLevelInputValue} onChange={this.handleChangeAny}/>
           </label>
           <label>
             reverbWidth: {parseFloat(this.state.reverbWidthInputValue).toFixed(2).toString().padEnd(4,'0')}
-            <input name="reverbWidthInputValue" type="range" min="0.0" max="1.0" step="0.01" value={this.state.reverbWidthInputValue} onChange={this.handleChangeAny}/>
+            <input name="reverbWidthInputValue" type="range" orient="vertical" min="0.0" max="1.0" step="0.01" value={this.state.reverbWidthInputValue} onChange={this.handleChangeAny}/>
           </label>
           <label>
             reverbMode: {this.state.reverbModeInputValue.padStart(1,'0')}
-            <input name="reverbModeInputValue" type="range" min="0" max="1" step="1" value={this.state.reverbModeInputValue} onChange={this.handleChangeAny}/>
+            <input name="reverbModeInputValue" type="range" orient="vertical" min="0" max="1" step="1" value={this.state.reverbModeInputValue} onChange={this.handleChangeAny}/>
           </label>
           <label>
             reverbOrder: {this.state.reverbOrderNumberInputValue.padStart(1,'0')}
-            <input name="reverbOrderNumberInputValue" type="range" min="1" max="5" step="1" value={this.state.reverbOrderNumberInputValue} onChange={this.handleChangeAny}/>
+            <input name="reverbOrderNumberInputValue" type="range" orient="vertical" min="1" max="5" step="1" value={this.state.reverbOrderNumberInputValue} onChange={this.handleChangeAny}/>
           </label>
           <label>
             reverbEnable: {this.state.reverbEnabledInputValue}
             <input name="reverbEnabledInputValue" type="checkbox" checked={this.state.reverbEnabledInputValue} onChange={this.handleChangeCheckBox}/>
           </label>
-          <br></br>
+          </div>
+          <div style={mystyle}>
           <label>
             bitcrusherDownSample: {this.state.bitcrusherDownSampleInputValue.padStart(1,'0')}
-            <input name="bitcrusherDownSampleInputValue" type="range" min="1" max="10" step="1" value={this.state.bitcrusherDownSampleInputValue} onChange={this.handleChangeAny}/>
+            <input name="bitcrusherDownSampleInputValue" type="range" orient="vertical" min="1" max="10" step="1" value={this.state.bitcrusherDownSampleInputValue} onChange={this.handleChangeAny}/>
           </label>
           <label>
             bitcrusherEnabled: {this.state.bitcrusherEnabledInputValue}
@@ -218,8 +255,9 @@ export class NameForm extends React.Component {
           </label>
           <label>
             bitcrusherOrder: {this.state.bitcrusherOrderNumberInputValue.padStart(1,'0')}
-            <input name="bitcrusherOrderNumberInputValue" type="range" min="1" max="5" step="1" value={this.state.bitcrusherOrderNumberInputValue} onChange={this.handleChangeAny}/>
+            <input name="bitcrusherOrderNumberInputValue" type="range" orient="vertical" min="1" max="5" step="1" value={this.state.bitcrusherOrderNumberInputValue} onChange={this.handleChangeAny}/>
           </label>
+          </div>
           <br></br>
           <input type="submit" value="Submit" />
         </form>
